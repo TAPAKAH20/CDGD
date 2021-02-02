@@ -29,18 +29,24 @@ public:
 
 private:
 	std::vector<T> data;
-	size_t item_size;
+	size_t item_size = sizeof(T);
 	size_t stride;
 };
 template<typename T>
 inline resource<T>::resource(size_t size)
 {
-	THROW_ERROR("Not implemented yet");
+//THROW_ERROR("Not implemented yet");
+	data.resize(size);
+	//item_size = sizeof(T);
+	stride = 0;
 }
 template<typename T>
 inline resource<T>::resource(size_t x_size, size_t y_size)
 {
-	THROW_ERROR("Not implemented yet");
+	//THROW_ERROR("Not implemented yet");
+	data.resize(x_size * y_size);
+	//item_size = sizeof(T);
+	stride = x_size;
 }
 template<typename T>
 inline resource<T>::~resource()
@@ -49,41 +55,33 @@ inline resource<T>::~resource()
 template<typename T>
 inline const T* resource<T>::get_data()
 {
-	THROW_ERROR("Not implemented yet");
-	return nullptr;
+	return data.data();
 }
 template<typename T>
 inline T& resource<T>::item(size_t item)
 {
-	THROW_ERROR("Not implemented yet");
-	T obj;
-	return obj;
+	return data.at(item);
 }
 template<typename T>
 inline T& resource<T>::item(size_t x, size_t y)
 {
-	THROW_ERROR("Not implemented yet");
-	T obj;
-	return obj;
+	return data.at(y * stride + x);
 }
 template<typename T>
 inline size_t resource<T>::get_size_in_bytes() const
 {
-	THROW_ERROR("Not implemented yet");
-	return 0;
+	return data.size() * item_size;
 }
 template<typename T>
 inline size_t resource<T>::get_number_of_elements() const
 {
-	THROW_ERROR("Not implemented yet");
-	return 0;
+	return data.size();
 }
 
 template<typename T>
 inline size_t resource<T>::get_stride() const
 {
-	THROW_ERROR("Not implemented yet");
-	return 0;
+	return stride;
 }
 struct color
 {
@@ -101,8 +99,11 @@ struct unsigned_color
 {
 	static unsigned_color from_color(const color& color)
 	{
-		THROW_ERROR("Not implemented yet");
-		return unsigned_color();
+		unsigned_color out{};
+		out.r = std::clamp(static_cast<int>(255.f * color.r), 0, 255);
+		out.g = std::clamp(static_cast<int>(255.f * color.g), 0, 255);
+		out.b = std::clamp(static_cast<int>(255.f * color.b), 0, 255);
+		return out;
 	};
 	float3 to_float3()
 	{

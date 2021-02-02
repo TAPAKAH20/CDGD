@@ -40,8 +40,8 @@ public:
 
 protected:
 	float3 position;
-	float theta;
-	float phi;
+	float theta;//yaw
+	float phi;//pitch
 
 	float height;
 	float width;

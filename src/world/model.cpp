@@ -120,9 +120,9 @@ void cg::world::model::load_obj(const std::filesystem::path& model_path)
 				}
 				else
 				{
-					vertex.nx = vertex.x;
-					vertex.ny = vertex.y;
-					vertex.nz = vertex.z;
+					vertex.nx = normal.x;
+					vertex.ny = normal.y;
+					vertex.nz = normal.z;
 				}
 
 

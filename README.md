@@ -1,6 +1,7 @@
 # Computer graphics in Game development course
 
 This repo contains a template for Computer graphics in Game development labs (spring 2021)  
+Result of rendering with commited raytracer renderer options
 ![raytracer result](https://i.imgur.com/EQCevpV.png)
 ## Pre requirements
 

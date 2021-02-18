@@ -1,7 +1,7 @@
 # Computer graphics in Game development course
 
 This repo contains a template for Computer graphics in Game development labs (spring 2021)  
-![raytracer result](https://imgur.com/a/lCgkevR)
+![raytracer result](https://i.imgur.com/EQCevpV.png)
 ## Pre requirements
 
 - [Premake5](https://premake.github.io/download.html#v5)

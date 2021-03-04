@@ -58,7 +58,8 @@ void cg::renderer::ray_tracing_renderer::render()
 		float3 normal = payload.bary.x * triangle.na +
 						payload.bary.y * triangle.nb + payload.bary.z * triangle.nc;
 
-		for (int i = 0; i < 3; i++)
+
+		for (int i = 0; i < 5; i++)
 		{
 
 			float3 direction{

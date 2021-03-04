@@ -88,18 +88,11 @@ const DirectX::XMMATRIX cg::world::camera::get_dxm_view_matrix() const
 	DirectX::FXMVECTOR eye_direction{ direction.x, direction.y, direction.z };
 	DirectX::FXMVECTOR eye_position{ position.x, position.y, position.z };
 	return DirectX::XMMatrixLookToRH(eye_position, eye_direction, up_direction);
-	// return DirectX::XMMatrixIdentity();
 }
 
 const DirectX::XMMATRIX cg::world::camera::get_dxm_projection_matrix() const
 {
-	// float3 direction = get_direction();
-	// DirectX::FMXVECTOR up_direction{ 0.f, 1.f, 0.f };
-	// DirectX::FMXVECTOR eye_direction{ direction.x, direction.y, direction.x};
-	// DirectX::FMXVECTOR eye_position{ position.x, position.y, position.x };
-	// return DirectX::XMMAtrixLookToRH(
-	// eye_position, eye_direction, up_direction)
-	return DirectX::XMMatrixIdentity();
+	return DirectX::XMMatrixPerspectiveFovRH(angle_of_view, aspect_ratio, z_near, z_far);
 }
 #endif
 
